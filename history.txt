@@ -1,13 +1,13 @@
 docker --version
 
-sudo docker image build -t custom-caddy:2.5.0-alpine .
+sudo docker image build -t caddy:2.5.0-alpine .
 
 sudo docker image ls
 
 sudo docker container run             \
         --name my-caddy-server         \
         -p 8080:80                     \
-        -d custom-caddy:2.5.0-alpine
+        -d caddy:2.5.0-alpine
 
 sudo docker container ls  
 
@@ -19,10 +19,8 @@ sudo docker container rm my-caddy-server
 
 sudo docker container ls  
 
-sudo docker image build . -t custom-caddy:2.5.0-alpine
-
 sudo docker container run             \
 	--name my-caddy-server         \
 	-p 8080:80                     \
-    -v "$(pwd)":"$(pwd)"         \
-    -d custom-caddy:2.5.0-alpine
+    -v /home/daniel/miniep6/usr/src/pages/index.html:/usr/src/pages/index.html         \
+    -d caddy:2.5.0-alpine
